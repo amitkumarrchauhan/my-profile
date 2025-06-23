@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amit - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #ffffff;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            min-height: 297mm;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: #34495e;
+            color: white;
+            padding: 40px 50px 30px;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 8px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .header .title {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            color: #bdc3c7;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .contact-info .icon {
+            width: 16px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 40px 50px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 35px;
+        }
+
+        .section {
+            position: relative;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .experience-item::before, .education-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #3498db;
+        }
+
+        .experience-item h3, .education-item h3 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .company, .institution {
+            font-weight: 600;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .description {
+            color: #34495e;
+            line-height: 1.6;
+        }
+
+        .description ul {
+            padding-left: 18px;
+            margin-top: 8px;
+        }
+
+        .description li {
+            margin-bottom: 6px;
+            position: relative;
+        }
+
+        .description li::marker {
+            color: #3498db;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #f8f9fa;
+            color: #2c3e50;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-left: 3px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #e3f2fd;
+            transform: translateY(-1px);
+        }
+
+        .summary {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #34495e;
+            text-align: justify;
+            padding: 20px;
+            background: #f8f9fa;
+            /* border-left: 4px solid #3498db; */
+            border-radius: 0 4px 4px 0;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .header {
+                padding: 30px 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .content {
+                padding: 25px;
+                gap: 25px;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .skills {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                font-size: 12px;
+            }
+            
+            .container {
+                box-shadow: none;
+                margin: 0;
+                max-width: none;
+            }
+            
+            .header {
+                background: #34495e !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .header::after {
+                background: linear-gradient(45deg, #3498db, #2980b9) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .section h2::after {
+                background: linear-gradient(45deg, #3498db, #2980b9) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .experience-item::before, .education-item::before {
+                background: #3498db !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .content {
+                padding: 30px 40px;
+            }
+
+            .section {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .experience-item, .education-item {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Amitkumar Chauhan</h1>
+            <div class="title">Development Lead - UI (FullStack)</div>
+            <div class="contact-info">
+                <span><span class="icon">📧</span> chauhan.amitkumar@gmail.com</span>
+                <span><span class="icon">📱</span> +65 9058 7749</span>
+                <span><span class="icon">🌐</span> linkedin.com/in/amitkumarrchauhan</span>
+                <span><span class="icon">📍</span> Singapore</span>
+            </div>
+        </header>
+
+        <div class="content">
+            <section class="section">
+                <h2>Professional Summary</h2>
+                <div class="summary">
+                    Seasoned UI Development Lead and Certified Scrum Master with 16 years of experience architecting robust web and mobile solutions across ReactJS, Remix/ReactRouter/NextJS, NodeJS, NestJS, Java, and SCG technologies. Led creation of a scalable in-house React Component Library that significantly enhanced development velocity. Distinguished by strategic leadership excellence, unwavering delivery quality, and innovative technical vision—including implementation of AI-powered development workflows, custom prompt template creation, and establishment of generative AI-driven development processes while mentoring teams in cutting-edge technology adoption.
+                </div>
+            </section>
+
+            <div class="two-column">
+                <section class="section">
+                    <h2>Technical Skills</h2>
+                    <div class="skills">
+                        <span class="skill-tag">JavaScript/TypeScript</span>
+                        <span class="skill-tag">ReactJS</span>
+                        <span class="skill-tag">Remix/React Router</span>
+                        <span class="skill-tag">NextJS</span>
+                        <span class="skill-tag">NodeJS</span>
+                        <span class="skill-tag">NestJS</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">Java/Spring Boot</span>
+                        <span class="skill-tag">HTML/CSS/SASS</span>
+                        <span class="skill-tag">Material UI</span>
+                        <span class="skill-tag">Vitest/Jest</span>
+                        <span class="skill-tag">Playwright/Cypress</span>
+                        <span class="skill-tag">Vite/Webpack</span>
+                        <span class="skill-tag">PostgreSQL/MongoDB</span>
+                        <span class="skill-tag">Oracle/Firebase</span>
+                        <span class="skill-tag">Git/Jenkins</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Scrum Master</span>
+                        <span class="skill-tag">GitHub Copilot</span>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Education</h2>
+                    
+                    <div class="education-item">
+                        <h3>Bachelor of Computer Engineering</h3>
+                        <div class="institution">University of Mumbai</div>
+                        <div class="date">2008 | Mumbai, Maharashtra, India</div>
+                        <div class="description">
+                            Thakur College of Engineering & Technology
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>Diploma in Computer Technologies</h3>
+                        <div class="institution">Maharashtra State Board of Technical Education</div>
+                        <div class="date">2005 | Palghar, Maharashtra, India</div>
+                        <div class="description">
+                            Bhausaheb Vartak Polytechnic
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="section">
+                <h2>Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <h3>Development Lead - UI</h3>
+                    <div class="company">Standard Chartered Bank</div>
+                    <div class="date">July 2021 - Present | Singapore</div>
+                    <div class="description">
+                        <ul>
+                            <li>Led the adoption of GitHub Copilot and created prompt templates for automated page generation from our component library, resulting in 50% to 60% faster development cycles and enhanced focus on precision design implementation</li>
+                            <li>Led a development team to create and publish an in-house React UI component library, successfully adopted by two additional projects, resulting in significantly accelerated delivery timelines</li>
+                            <li>Leveraged Atomic Design principles to create a highly maintainable and extensible library for developers</li>
+                            <li>Collaborated with cross-functional UI development teams and led an 8-member team to deliver component-level solutions that met stakeholder requirements</li>
+                            <li>Delivered 100% of sprint commitments on schedule through effective code review processes and seamless collaboration with remote development teams</li>
+                            <li>Served as technical advisor for design and feature development decisions while facilitating stakeholder engagement to ensure project alignment and continuous improvement through feedback integration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Application Consultant</h3>
+                    <div class="company">Optimum Solutions</div>
+                    <div class="date">December 2015 - July 2021 | Singapore</div>
+                    <div class="description">
+                        <ul>
+                            <li>Persuaded leadership to adopt structured web development methodologies incorporating prototyping and early stakeholder sign-off, resulting in improved project alignment and reduced late-stage revisions</li>
+                            <li>This process improvement enabled exceptional team performance, resulting in on-time project delivery</li>
+                            <li>The demonstrated results built strong management trust, resulting in increased workflow development assignments</li>
+                            <li>Monitored application performance, quality, and responsiveness while maintaining code standards, organizational structure, and DevOps automation processes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Module Lead</h3>
+                    <div class="company">NimbleWorks (Digite Infotech)</div>
+                    <div class="date">April 2010 - December 2015 | Mumbai, India</div>
+                    <div class="description">
+                        <ul>
+                            <li>Advanced to project leadership role after delivering SwiftALM migration from JSP/Servlet to ExtJS</li>
+                            <li>Established SPA foundation architecture using BackboneJS MVC and lightweight Java API development</li>
+                            <li>Delivered functional software in 6 months, enabling customer acquisition through live demonstrations</li>
+                            <li>Maintained zero-defect delivery standards while managing team and timeline objectives</li>
+                            <li>Executed complete legacy platform migration from JSP/Servlet to ExtJS technology stack</li>
+                            <li>Developed comprehensive unit testing framework with edge case coverage for bug prevention</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Junior Programmer</h3>
+                    <div class="company">IVIDA Technologies</div>
+                    <div class="date">July 2008 - December 2009 | Mumbai, India</div>
+                    <div class="description">
+                        <ul>
+                            <li>Project: Nebula (1.5 Years)</li>
+                            <li>Client: Gemplus Jewelery India</li>
+                            <li>Developed and maintained web applications using core programming technologies</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Education</h2>
+                
+                <div class="education-item">
+                    <h3>Bachelor of Computer Engineering</h3>
+                    <div class="institution">University of Mumbai</div>
+                    <div class="date">2008 | Kandivali, Mumbai, Maharashtra, India</div>
+                    <div class="description">
+                        Thakur College of Engineering & Technology
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <h3>Diploma in Computer Technologies</h3>
+                    <div class="institution">Maharashtra State Board of Technical Education</div>
+                    <div class="date">2005 | Vasai Road, Palghar, Maharashtra, India</div>
+                    <div class="description">
+                        Bhausaheb Vartak Polytechnic
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Volunteer Experience</h2>
+                <div class="description">
+                    <ul>
+you al                        <li><strong>Senior Citizen Technology Training</strong> - Volunteered in teaching senior citizens how to use Android phones</li>
+                        <li><strong>Community Outreach</strong> - Volunteered in packaging goodie bags for underprivileged children</li>
+                        <li><strong>Disability Support</strong> - Volunteered in serving food to senior citizens with disabilities</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
