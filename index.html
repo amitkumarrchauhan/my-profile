@@ -3,460 +3,606 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amit - Resume</title>
+    <title>Amitkumar Chauhan — Development Lead UI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg-page:       #f0f4f8;
+            --bg-card:       #ffffff;
+            --bg-sidebar:    #0f172a;
+            --accent:        #6366f1;
+            --accent-light:  #e0e7ff;
+            --accent-2:      #06b6d4;
+            --text-primary:  #0f172a;
+            --text-secondary:#475569;
+            --text-muted:    #94a3b8;
+            --text-on-dark:  #e2e8f0;
+            --border:        #e2e8f0;
+            --radius-sm:     6px;
+            --radius-md:     12px;
+            --radius-lg:     20px;
+            --shadow-sm:     0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
+            --shadow-md:     0 4px 16px rgba(0,0,0,.10);
+            --shadow-lg:     0 12px 40px rgba(0,0,0,.14);
         }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg-page);
+            color: var(--text-primary);
             line-height: 1.6;
-            color: #2c3e50;
-            background-color: #ffffff;
-            font-size: 14px;
+            font-size: 14.5px;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container {
-            max-width: 210mm;
-            margin: 0 auto;
-            background: white;
-            min-height: 297mm;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-
-        .header {
-            background: #34495e;
-            color: white;
-            padding: 40px 50px 30px;
-            position: relative;
-        }
-
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: linear-gradient(45deg, #3498db, #2980b9);
-        }
-
-        .header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 8px;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .header .title {
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin-bottom: 25px;
-            color: #bdc3c7;
-        }
-
-        .contact-info {
+        /* ── Wrapper ── */
+        .resume {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: 280px 1fr;
+            max-width: 960px;
+            min-height: 100vh;
+            margin: 40px auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
         }
 
-        .contact-info span {
+        /* ══════════════════════════
+           SIDEBAR
+        ══════════════════════════ */
+        .sidebar {
+            background: var(--bg-sidebar);
+            color: var(--text-on-dark);
+            padding: 44px 28px 40px;
             display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
+            flex-direction: column;
+            gap: 36px;
         }
 
-        .contact-info .icon {
-            width: 16px;
+        .sidebar-profile {
             text-align: center;
         }
 
-        .content {
-            padding: 40px 50px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 35px;
-        }
-
-        .section {
-            position: relative;
-        }
-
-        .section h2 {
-            color: #2c3e50;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            position: relative;
-            padding-bottom: 8px;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(45deg, #3498db, #2980b9);
-        }
-
-        .experience-item, .education-item {
-            margin-bottom: 25px;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .experience-item::before, .education-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 8px;
-            height: 8px;
+        .avatar {
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
-            background: #3498db;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -1px;
         }
 
-        .experience-item h3, .education-item h3 {
-            color: #2c3e50;
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .company, .institution {
-            font-weight: 600;
-            color: #3498db;
-            margin-bottom: 5px;
-        }
-
-        .date {
-            color: #7f8c8d;
-            font-style: italic;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-        }
-
-        .description {
-            color: #34495e;
-            line-height: 1.6;
-        }
-
-        .description ul {
-            padding-left: 18px;
-            margin-top: 8px;
-        }
-
-        .description li {
+        .sidebar-profile h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            line-height: 1.3;
+            color: #fff;
             margin-bottom: 6px;
+        }
+
+        .sidebar-profile .role {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent-2);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .sb-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            word-break: break-all;
+        }
+
+        .contact-list .ic {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.07);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-list .ic svg {
+            width: 13px;
+            height: 13px;
+            stroke: var(--accent-2);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .skill-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .skill-pill {
+            background: rgba(99,102,241,0.18);
+            color: #a5b4fc;
+            border: 1px solid rgba(99,102,241,0.30);
+            border-radius: 999px;
+            padding: 4px 11px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .skill-pill:hover {
+            background: rgba(99,102,241,0.36);
+            color: #fff;
+        }
+
+        .edu-item {
+            margin-bottom: 18px;
+        }
+
+        .edu-item:last-child { margin-bottom: 0; }
+
+        .edu-item h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            line-height: 1.4;
+            margin-bottom: 3px;
+        }
+
+        .edu-item .inst {
+            font-size: 0.78rem;
+            color: var(--accent-2);
+            margin-bottom: 2px;
+        }
+
+        .edu-item .yr {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        .volunteer-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .volunteer-list li {
+            font-size: 0.79rem;
+            color: #94a3b8;
+            padding-left: 14px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .volunteer-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* ══════════════════════════
+           MAIN CONTENT
+        ══════════════════════════ */
+        .main {
+            background: var(--bg-card);
+            padding: 44px 40px 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            overflow: hidden;
+        }
+
+        .sec-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .sec-title h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+        }
+
+        .sec-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+            border-radius: 2px;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0f2fe 100%);
+            border-radius: var(--radius-md);
+            padding: 20px 22px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            border: 1px solid #c7d2fe;
+        }
+
+        /* ── Timeline ── */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tl-item {
+            display: grid;
+            grid-template-columns: 18px 1fr;
+            gap: 0 16px;
             position: relative;
         }
 
-        .description li::marker {
-            color: #3498db;
+        .tl-item:not(:last-child) .tl-line {
+            position: absolute;
+            left: 8px;
+            top: 22px;
+            bottom: -6px;
+            width: 2px;
+            background: var(--border);
+            z-index: 0;
         }
 
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        .tl-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2.5px solid var(--accent);
+            margin-top: 4px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            transition: background 0.2s;
+        }
+
+        .tl-item:hover .tl-dot {
+            background: var(--accent);
+        }
+
+        .tl-body {
+            padding-bottom: 26px;
+        }
+
+        .tl-item:last-child .tl-body {
+            padding-bottom: 0;
+        }
+
+        .tl-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
             gap: 8px;
+            margin-bottom: 4px;
         }
 
-        .skill-tag {
-            background: #f8f9fa;
-            color: #2c3e50;
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border-left: 3px solid #3498db;
-            transition: all 0.3s ease;
+        .tl-role {
+            font-size: 0.97rem;
+            font-weight: 700;
+            color: var(--text-primary);
         }
 
-        .skill-tag:hover {
-            background: #e3f2fd;
-            transform: translateY(-1px);
+        .tl-company {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            border-radius: 999px;
+            padding: 1px 10px;
         }
 
-        .summary {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #34495e;
-            text-align: justify;
-            padding: 20px;
-            background: #f8f9fa;
-            /* border-left: 4px solid #3498db; */
-            border-radius: 0 4px 4px 0;
+        .tl-date {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            margin-left: auto;
         }
 
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+        .tl-body ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
         }
 
-        @media (max-width: 768px) {
-            .container {
+        .tl-body li {
+            font-size: 0.845rem;
+            color: var(--text-secondary);
+            padding-left: 13px;
+            position: relative;
+            line-height: 1.55;
+        }
+
+        .tl-body li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.6;
+        }
+
+        /* ══════════════════════════
+           RESPONSIVE
+        ══════════════════════════ */
+        @media (max-width: 720px) {
+            .resume {
+                grid-template-columns: 1fr;
                 margin: 0;
-                box-shadow: none;
+                border-radius: 0;
             }
-            
-            .header {
-                padding: 30px 25px 20px;
-            }
-            
-            .header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .contact-info {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            
-            .content {
-                padding: 25px;
-                gap: 25px;
-            }
-
-            .two-column {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-
-            .skills {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            }
+            .sidebar { padding: 36px 24px 32px; }
+            .main { padding: 32px 24px 40px; }
+            .tl-date { margin-left: 0; width: 100%; }
         }
 
+        /* ══════════════════════════
+           PRINT
+        ══════════════════════════ */
         @media print {
-            body {
-                background: white;
-                font-size: 12px;
-            }
-            
-            .container {
-                box-shadow: none;
-                margin: 0;
-                max-width: none;
-            }
-            
-            .header {
-                background: #34495e !important;
+            body { background: white; font-size: 12px; }
+            .resume { margin: 0; border-radius: 0; box-shadow: none; max-width: none; }
+            .sidebar {
+                background: #0f172a !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
-
-            .header::after {
-                background: linear-gradient(45deg, #3498db, #2980b9) !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .section h2::after {
-                background: linear-gradient(45deg, #3498db, #2980b9) !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .experience-item::before, .education-item::before {
-                background: #3498db !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .content {
-                padding: 30px 40px;
-            }
-
-            .section {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
-
-            .experience-item, .education-item {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
+            .tl-item { break-inside: avoid; page-break-inside: avoid; }
+            .main { padding: 32px 36px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
+<div class="resume">
+
+    <!-- ════════ SIDEBAR ════════ -->
+    <aside class="sidebar">
+
+        <div class="sidebar-profile">
+            <div class="avatar">AC</div>
             <h1>Amitkumar Chauhan</h1>
-            <div class="title">Development Lead - UI (FullStack)</div>
-            <div class="contact-info">
-                <span><span class="icon">📧</span> chauhan.amitkumar@gmail.com</span>
-                <span><span class="icon">📱</span> +65 9058 7749</span>
-                <span><span class="icon">🌐</span> linkedin.com/in/amitkumarrchauhan</span>
-                <span><span class="icon">📍</span> Singapore</span>
+            <div class="role">Development Lead · UI FullStack</div>
+        </div>
+
+        <!-- Contact -->
+        <div>
+            <div class="sb-label">Contact</div>
+            <ul class="contact-list">
+                <li>
+                    <span class="ic">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                    </span>
+                    chauhan.amitkumar@gmail.com
+                </li>
+                <li>
+                    <span class="ic">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 01.01 2a2 2 0 012-2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+                    </span>
+                    +65 9058 7749
+                </li>
+                <li>
+                    <span class="ic">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+                    </span>
+                    linkedin.com/in/amitkumarrchauhan
+                </li>
+                <li>
+                    <span class="ic">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </span>
+                    Singapore
+                </li>
+            </ul>
+        </div>
+
+        <!-- Skills -->
+        <div>
+            <div class="sb-label">Technical Skills</div>
+            <div class="skill-cloud">
+                <span class="skill-pill">JavaScript</span>
+                <span class="skill-pill">TypeScript</span>
+                <span class="skill-pill">ReactJS</span>
+                <span class="skill-pill">Remix / RR7</span>
+                <span class="skill-pill">Next.js</span>
+                <span class="skill-pill">Node.js</span>
+                <span class="skill-pill">NestJS</span>
+                <span class="skill-pill">Express.js</span>
+                <span class="skill-pill">Java / Spring Boot</span>
+                <span class="skill-pill">HTML / CSS / SASS</span>
+                <span class="skill-pill">Material UI</span>
+                <span class="skill-pill">Vitest / Jest</span>
+                <span class="skill-pill">Playwright / Cypress</span>
+                <span class="skill-pill">Vite / Webpack</span>
+                <span class="skill-pill">PostgreSQL / MongoDB</span>
+                <span class="skill-pill">Oracle / Firebase</span>
+                <span class="skill-pill">Git / Jenkins</span>
+                <span class="skill-pill">Docker</span>
+                <span class="skill-pill">Scrum Master</span>
+                <span class="skill-pill">GitHub Copilot</span>
             </div>
-        </header>
+        </div>
 
-        <div class="content">
-            <section class="section">
-                <h2>Professional Summary</h2>
-                <div class="summary">
-                    Seasoned UI Development Lead and Certified Scrum Master with 16 years of experience architecting robust web and mobile solutions across ReactJS, Remix/ReactRouter/NextJS, NodeJS, NestJS, Java, and SCG technologies. Led creation of a scalable in-house React Component Library that significantly enhanced development velocity. Distinguished by strategic leadership excellence, unwavering delivery quality, and innovative technical vision—including implementation of AI-powered development workflows, custom prompt template creation, and establishment of generative AI-driven development processes while mentoring teams in cutting-edge technology adoption.
-                </div>
-            </section>
+        <!-- Education -->
+        <div>
+            <div class="sb-label">Education</div>
 
-            <div class="two-column">
-                <section class="section">
-                    <h2>Technical Skills</h2>
-                    <div class="skills">
-                        <span class="skill-tag">JavaScript/TypeScript</span>
-                        <span class="skill-tag">ReactJS</span>
-                        <span class="skill-tag">Remix/React Router</span>
-                        <span class="skill-tag">NextJS</span>
-                        <span class="skill-tag">NodeJS</span>
-                        <span class="skill-tag">NestJS</span>
-                        <span class="skill-tag">Express.js</span>
-                        <span class="skill-tag">Java/Spring Boot</span>
-                        <span class="skill-tag">HTML/CSS/SASS</span>
-                        <span class="skill-tag">Material UI</span>
-                        <span class="skill-tag">Vitest/Jest</span>
-                        <span class="skill-tag">Playwright/Cypress</span>
-                        <span class="skill-tag">Vite/Webpack</span>
-                        <span class="skill-tag">PostgreSQL/MongoDB</span>
-                        <span class="skill-tag">Oracle/Firebase</span>
-                        <span class="skill-tag">Git/Jenkins</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Scrum Master</span>
-                        <span class="skill-tag">GitHub Copilot</span>
-                    </div>
-                </section>
-
-                <section class="section">
-                    <h2>Education</h2>
-                    
-                    <div class="education-item">
-                        <h3>Bachelor of Computer Engineering</h3>
-                        <div class="institution">University of Mumbai</div>
-                        <div class="date">2008 | Mumbai, Maharashtra, India</div>
-                        <div class="description">
-                            Thakur College of Engineering & Technology
-                        </div>
-                    </div>
-
-                    <div class="education-item">
-                        <h3>Diploma in Computer Technologies</h3>
-                        <div class="institution">Maharashtra State Board of Technical Education</div>
-                        <div class="date">2005 | Palghar, Maharashtra, India</div>
-                        <div class="description">
-                            Bhausaheb Vartak Polytechnic
-                        </div>
-                    </div>
-                </section>
+            <div class="edu-item">
+                <h4>Bachelor of Computer Engineering</h4>
+                <div class="inst">University of Mumbai</div>
+                <div class="yr">2008 &middot; Thakur College of Engineering &amp; Technology</div>
             </div>
 
-            <section class="section">
-                <h2>Professional Experience</h2>
-                
-                <div class="experience-item">
-                    <h3>Development Lead - UI</h3>
-                    <div class="company">Standard Chartered Bank</div>
-                    <div class="date">July 2021 - Present | Singapore</div>
-                    <div class="description">
+            <div class="edu-item">
+                <h4>Diploma in Computer Technologies</h4>
+                <div class="inst">Maharashtra State Board of Technical Education</div>
+                <div class="yr">2005 &middot; Bhausaheb Vartak Polytechnic</div>
+            </div>
+        </div>
+
+        <!-- Volunteer -->
+        <div>
+            <div class="sb-label">Volunteer</div>
+            <ul class="volunteer-list">
+                <li><strong style="color:#e2e8f0">Senior Citizen Tech Training</strong> &mdash; Teaching senior citizens how to use Android phones</li>
+                <li><strong style="color:#e2e8f0">Community Outreach</strong> &mdash; Packaging goodie bags for underprivileged children</li>
+                <li><strong style="color:#e2e8f0">Disability Support</strong> &mdash; Serving food to senior citizens with disabilities</li>
+            </ul>
+        </div>
+
+    </aside>
+
+    <!-- ════════ MAIN ════════ -->
+    <main class="main">
+
+        <!-- Summary -->
+        <section>
+            <div class="sec-title"><h2>Profile</h2></div>
+            <div class="summary-card">
+                Seasoned UI Development Lead and Certified Scrum Master with <strong>16 years</strong> of experience architecting robust web and mobile solutions across ReactJS, Remix / React Router 7, Next.js, Node.js, NestJS, Java, and SCG technologies. Led creation of a scalable in-house React Component Library that significantly enhanced development velocity. Distinguished by strategic leadership, unwavering delivery quality, and innovative technical vision &mdash; including implementation of <strong>AI-powered development workflows</strong>, custom prompt template creation, and establishment of generative AI-driven development processes while mentoring teams in cutting-edge technology adoption.
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section>
+            <div class="sec-title"><h2>Experience</h2></div>
+            <div class="timeline">
+
+                <div class="tl-item">
+                    <div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-line"></div>
+                    </div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-role">Development Lead &mdash; UI</span>
+                            <span class="tl-company">Standard Chartered Bank</span>
+                            <span class="tl-date">Jul 2021 &ndash; Present &middot; Singapore</span>
+                        </div>
                         <ul>
-                            <li>Led the adoption of GitHub Copilot and created prompt templates for automated page generation from our component library, resulting in 50% to 60% faster development cycles and enhanced focus on precision design implementation</li>
-                            <li>Led a development team to create and publish an in-house React UI component library, successfully adopted by two additional projects, resulting in significantly accelerated delivery timelines</li>
-                            <li>Leveraged Atomic Design principles to create a highly maintainable and extensible library for developers</li>
-                            <li>Collaborated with cross-functional UI development teams and led an 8-member team to deliver component-level solutions that met stakeholder requirements</li>
-                            <li>Delivered 100% of sprint commitments on schedule through effective code review processes and seamless collaboration with remote development teams</li>
-                            <li>Served as technical advisor for design and feature development decisions while facilitating stakeholder engagement to ensure project alignment and continuous improvement through feedback integration</li>
+                            <li>Led adoption of GitHub Copilot and created prompt templates for automated page generation from the component library, achieving <strong>50&ndash;60% faster</strong> development cycles</li>
+                            <li>Led the creation and publication of an in-house React UI component library, adopted across two additional projects, accelerating delivery timelines significantly</li>
+                            <li>Leveraged Atomic Design principles to build a highly maintainable and extensible library for developers</li>
+                            <li>Managed an 8-member cross-functional team, delivering component-level solutions that met stakeholder requirements</li>
+                            <li>Achieved <strong>100% sprint commitment delivery</strong> through disciplined code review and seamless remote collaboration</li>
+                            <li>Served as technical advisor for design and feature decisions; facilitated stakeholder engagement for continuous improvement</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="experience-item">
-                    <h3>Application Consultant</h3>
-                    <div class="company">Optimum Solutions</div>
-                    <div class="date">December 2015 - July 2021 | Singapore</div>
-                    <div class="description">
+                <div class="tl-item">
+                    <div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-line"></div>
+                    </div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-role">Application Consultant</span>
+                            <span class="tl-company">Optimum Solutions</span>
+                            <span class="tl-date">Dec 2015 &ndash; Jul 2021 &middot; Singapore</span>
+                        </div>
                         <ul>
-                            <li>Persuaded leadership to adopt structured web development methodologies incorporating prototyping and early stakeholder sign-off, resulting in improved project alignment and reduced late-stage revisions</li>
-                            <li>This process improvement enabled exceptional team performance, resulting in on-time project delivery</li>
-                            <li>The demonstrated results built strong management trust, resulting in increased workflow development assignments</li>
-                            <li>Monitored application performance, quality, and responsiveness while maintaining code standards, organizational structure, and DevOps automation processes</li>
+                            <li>Championed adoption of structured web development methodologies with prototyping and early stakeholder sign-off, reducing late-stage revisions</li>
+                            <li>Enabled exceptional team performance through process improvements, resulting in consistent on-time project delivery</li>
+                            <li>Built strong management trust through demonstrated results, leading to increased workflow development assignments</li>
+                            <li>Monitored application performance, quality, and responsiveness while maintaining code standards and DevOps automation</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="experience-item">
-                    <h3>Module Lead</h3>
-                    <div class="company">NimbleWorks (Digite Infotech)</div>
-                    <div class="date">April 2010 - December 2015 | Mumbai, India</div>
-                    <div class="description">
+                <div class="tl-item">
+                    <div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-line"></div>
+                    </div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-role">Module Lead</span>
+                            <span class="tl-company">NimbleWorks (Digite Infotech)</span>
+                            <span class="tl-date">Apr 2010 &ndash; Dec 2015 &middot; Mumbai, India</span>
+                        </div>
                         <ul>
-                            <li>Advanced to project leadership role after delivering SwiftALM migration from JSP/Servlet to ExtJS</li>
-                            <li>Established SPA foundation architecture using BackboneJS MVC and lightweight Java API development</li>
+                            <li>Promoted to project leadership after successfully delivering SwiftALM migration from JSP/Servlet to ExtJS</li>
+                            <li>Established SPA foundation architecture using BackboneJS MVC and lightweight Java APIs</li>
                             <li>Delivered functional software in 6 months, enabling customer acquisition through live demonstrations</li>
                             <li>Maintained zero-defect delivery standards while managing team and timeline objectives</li>
-                            <li>Executed complete legacy platform migration from JSP/Servlet to ExtJS technology stack</li>
-                            <li>Developed comprehensive unit testing framework with edge case coverage for bug prevention</li>
+                            <li>Developed comprehensive unit testing framework with edge-case coverage for proactive bug prevention</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="experience-item">
-                    <h3>Junior Programmer</h3>
-                    <div class="company">IVIDA Technologies</div>
-                    <div class="date">July 2008 - December 2009 | Mumbai, India</div>
-                    <div class="description">
+                <div class="tl-item">
+                    <div>
+                        <div class="tl-dot"></div>
+                    </div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-role">Junior Programmer</span>
+                            <span class="tl-company">IVIDA Technologies</span>
+                            <span class="tl-date">Jul 2008 &ndash; Dec 2009 &middot; Mumbai, India</span>
+                        </div>
                         <ul>
-                            <li>Project: Nebula (1.5 Years)</li>
-                            <li>Client: Gemplus Jewelery India</li>
-                            <li>Developed and maintained web applications using core programming technologies</li>
+                            <li>Developed and maintained web applications for Nebula project &mdash; Client: Gemplus Jewellery India</li>
+                            <li>Gained core full-stack development fundamentals across frontend and backend technologies</li>
                         </ul>
                     </div>
                 </div>
-            </section>
 
-            <section class="section">
-                <h2>Education</h2>
-                
-                <div class="education-item">
-                    <h3>Bachelor of Computer Engineering</h3>
-                    <div class="institution">University of Mumbai</div>
-                    <div class="date">2008 | Kandivali, Mumbai, Maharashtra, India</div>
-                    <div class="description">
-                        Thakur College of Engineering & Technology
-                    </div>
-                </div>
+            </div>
+        </section>
 
-                <div class="education-item">
-                    <h3>Diploma in Computer Technologies</h3>
-                    <div class="institution">Maharashtra State Board of Technical Education</div>
-                    <div class="date">2005 | Vasai Road, Palghar, Maharashtra, India</div>
-                    <div class="description">
-                        Bhausaheb Vartak Polytechnic
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Volunteer Experience</h2>
-                <div class="description">
-                    <ul>
-                        <li><strong>Senior Citizen Technology Training</strong> - Volunteered in teaching senior citizens how to use Android phones</li>
-                        <li><strong>Community Outreach</strong> - Volunteered in packaging goodie bags for underprivileged children</li>
-                        <li><strong>Disability Support</strong> - Volunteered in serving food to senior citizens with disabilities</li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    </div>
+    </main>
+</div>
 </body>
 </html>
